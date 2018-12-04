@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 const emptyEmployeeObject = {
   firstName: '',
@@ -19,7 +20,10 @@ class EmployeeForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.addEmployee(this.state);
+    this.props.dispatch({
+        type: 'ADD_EMPLOYEE',
+        payload: this.state
+    })
     this.clearEmployeeFields();
   }
 
@@ -41,4 +45,11 @@ class EmployeeForm extends Component {
   }
 }
 
-export default EmployeeForm;
+const mapReduxStateToProps = (reduxStore) => {
+    //this makes this.props.reduxStore
+    return {
+        reduxStore
+    }
+}
+
+export default connect(mapReduxStateToProps)(EmployeeForm);

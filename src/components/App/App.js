@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EmployeeForm from '../EmployeeForm/EmployeeForm';
 import EmployeeList from '../EmployeeList/EmployeeList';
 import EmployeeTotal from '../EmployeeTotal/EmployeeTotal';
+import { connect } from 'react-redux';
 
 class App extends Component {
   state = {
@@ -39,4 +40,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapReduxStateToProps = (reduxStore) => {
+    //this makes this.props.reduxStore
+    return {
+        reduxStore
+    }
+}
+
+export default connect(mapReduxStateToProps)(App);
