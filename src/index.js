@@ -12,7 +12,7 @@ const employeeList = (state = [], action) => {
         return [...state, action.payload]
     }
     else if (action.type === 'DELETE_EMPLOYEE') {
-        const matchEmployee = employee => action.payload.idNumber !== action.payload.idNumber;
+        const matchEmployee = employee => action.payload.idNumber !== employee.idNumber;
         return state.filter(matchEmployee)
     }
     return state

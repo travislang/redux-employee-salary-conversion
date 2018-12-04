@@ -14,8 +14,8 @@ class App extends Component {
         </section>
         <section>
           <h2>Employees</h2>
-          <EmployeeList employeeList={this.props.reduxStore.employeeList}/>
-            <EmployeeTotal employeeList={this.props.reduxStore.employeeList}/>
+          <EmployeeList />
+            <EmployeeTotal />
         </section>
       </div>
     );
