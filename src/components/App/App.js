@@ -5,35 +5,17 @@ import EmployeeTotal from '../EmployeeTotal/EmployeeTotal';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  state = {
-    employeeList: [],
-  };
-
-  addEmployee = (newEmployee) => {
-    this.setState({
-      employeeList: [...this.state.employeeList, newEmployee],
-    });
-  }
-
-  deleteEmployee = (employeeToDelete) => {
-    const matchEmployee = employee => employee.idNumber !== employeeToDelete.idNumber;
-
-    this.setState({
-      employeeList: this.state.employeeList.filter(matchEmployee),
-    });
-  }
-
   render() {
     return (
       <div>
         <section>
           <h2>Add Employee</h2>
-          <EmployeeForm addEmployee={this.addEmployee} />
+          <EmployeeForm />
         </section>
         <section>
           <h2>Employees</h2>
-          <EmployeeList employeeList={this.state.employeeList} deleteEmployee={this.deleteEmployee} />
-          <EmployeeTotal employeeList={this.state.employeeList} />
+          <EmployeeList employeeList={this.props.reduxStore.employeeList}/>
+            <EmployeeTotal employeeList={this.props.reduxStore.employeeList}/>
         </section>
       </div>
     );
