@@ -17,11 +17,9 @@ const employeeList = (state = [], action) => {
     }
     return state
 }
-
 const storeInstance = createStore(
     combineReducers({ employeeList }),
     applyMiddleware(logger)
 )
-
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
